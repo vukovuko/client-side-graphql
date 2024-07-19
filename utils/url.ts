@@ -1,1 +1,1 @@
-export const url = process.env.APP_URL ?? 'http://localhost:3000/api/graphql'
+export const url = "https://client-side-graphql.vercel.app/api/graphql"

@@ -1,16 +1,16 @@
 'use client'
 
-import { PropsWithChildren, useMemo } from 'react'
+import { cacheExchange } from '@urql/exchange-graphcache'
 import {
   UrqlProvider,
-  ssrExchange,
-  fetchExchange,
   createClient,
+  fetchExchange,
+  ssrExchange,
 } from '@urql/next'
-import { cacheExchange } from '@urql/exchange-graphcache'
+import { PropsWithChildren, useMemo } from 'react'
 
-import { url } from '@/utils/url'
 import { getToken } from '@/utils/token'
+import { url } from '@/utils/url'
 
 export default function GQLProvider({ children }: PropsWithChildren) {
   const [client, ssr] = useMemo(() => {
