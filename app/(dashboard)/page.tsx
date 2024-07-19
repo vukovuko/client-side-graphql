@@ -1,8 +1,6 @@
 'use client'
+import { CreateIssueMutation } from '@/gql/createIssueMutation'
 import { IssuesQuery } from '@/gql/issuesQuery'
-import PageHeader from '../_components/PageHeader'
-import { useMutation, useQuery } from 'urql'
-import { useState } from 'react'
 import {
   Button,
   Modal,
@@ -16,8 +14,10 @@ import {
   useDisclosure,
 } from '@nextui-org/react'
 import { PlusIcon } from 'lucide-react'
-import { CreateIssueMutation } from '@/gql/createIssueMutation'
+import { useState } from 'react'
+import { useMutation, useQuery } from 'urql'
 import Issue from '../_components/Issue'
+import PageHeader from '../_components/PageHeader'
 
 const IssuesPage = () => {
   const [{ data, fetching, error }, replay] = useQuery({
@@ -104,7 +104,7 @@ const IssuesPage = () => {
                 </div>
               </ModalBody>
               <ModalFooter className="border-t">
-                <Button variant="ghost" onPress={() => onOpenChange(false)}>
+                <Button variant="ghost" onPress={() => onOpenChange()}>
                   Cancel
                 </Button>
                 <Button
