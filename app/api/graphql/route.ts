@@ -1,23 +1,25 @@
-import { startServerAndCreateNextHandler } from '@as-integrations/next'
+import { getUserFromToken } from '@/utils/auth'
 import { ApolloServer } from '@apollo/server'
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
 } from '@apollo/server/plugin/landingPage/default'
+import { startServerAndCreateNextHandler } from '@as-integrations/next'
 import { NextRequest } from 'next/server'
-import typeDefs from './schema'
 import resolvers from './resolvers'
-import { getUserFromToken } from '@/utils/auth'
+import typeDefs from './schema'
 
 let plugins = []
 if (process.env.NODE_ENV === 'production') {
   plugins = [
+    // @ts-ignore
     ApolloServerPluginLandingPageProductionDefault({
       embed: true,
       graphRef: 'myGraph@prod',
     }),
   ]
 } else {
+  // @ts-ignore
   plugins = [ApolloServerPluginLandingPageLocalDefault({ embed: true })]
 }
 
