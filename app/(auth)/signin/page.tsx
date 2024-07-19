@@ -50,7 +50,7 @@ const SigninPage = () => {
         </div>
         <div className="flex justify-between items-center">
           <Link className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500" href="/signup">
-            Don't have an account?
+            Don&apos;t have an account?
           </Link>
           <Button type="submit" variant="solid" color="primary">
             Signin
