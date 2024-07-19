@@ -1,19 +1,20 @@
 'use client'
 
+import { EditIssueIssueMutation } from '@/gql/updateIssueMutation'
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
 } from '@nextui-org/react'
-import StatusRing from './StatusRing'
 import { useMutation } from 'urql'
-import { EditIssueIssueMutation } from '@/gql/updateIssueMutation'
+import StatusRing from './StatusRing'
 
 const Status = ({ status, issueId }) => {
   const [editResult, editIssue] = useMutation(EditIssueIssueMutation)
 
-  const onAction = async (newStatus: string) => {
+  const onAction = async (key: React.Key) => {
+    const newStatus = key.toString();
     await editIssue({ input: { id: issueId, status: newStatus } })
   }
 
